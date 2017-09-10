@@ -5,17 +5,21 @@
  */
 package paint;
 
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 /**
  *
- * @author lokua
+ * @author santo
  */
-public class Paint {
+public class Paint extends JFrame {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Interfaz display = new Interfaz();
+        display.setBounds(0, 0, 800, 500);
+        display.setVisible(true);
+
     }
-    
+
 }

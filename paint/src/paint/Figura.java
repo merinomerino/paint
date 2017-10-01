@@ -1,4 +1,4 @@
-package PuebraMarcoDibujo;
+package PruebaMarcoDibujo;
 
 import java.awt.BasicStroke;
 import java.awt.Color;

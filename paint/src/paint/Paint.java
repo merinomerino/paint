@@ -17,6 +17,7 @@ public class Paint extends JFrame {
 
     public static void main(String[] args) {
         Interfaz display = new Interfaz();
+        MiPanel pane=new MiPanel();
         display.setBounds(0, 0, 800, 500);
         display.setVisible(true);
 

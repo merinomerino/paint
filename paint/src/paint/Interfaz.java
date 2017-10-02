@@ -25,7 +25,7 @@ public class Interfaz extends JFrame {
     public Interfaz() {
         setLayout(null);
         String[] ColorsOptions = {"Red", "Green"};
-        String[] FigOptions = {"Circulo", "Rectangulo"};
+        String[] FigOptions = {"Circulo", "Rectangulo","Linea"};
         
         num1=new JButton("Undo");
         num1.setBounds(10,10, 80, 30);

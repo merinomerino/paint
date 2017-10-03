@@ -25,7 +25,7 @@ public class MiOvalo extends MiFiguraDelimitada{
 	@Override
 	public void dibujar ( Graphics2D g ){
 		g.setPaint( obtenerColor() );
-		g.setStroke( obtenerStroke() );
+		//g.setStroke( obtenerStroke() );
 		
 		if ( obtenerRelleno() == true )
 			g.fillOval( obtenerXSupIzq(), obtenerYSupIzq(), obtenerAnchura(), obtenerAltura() );

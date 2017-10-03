@@ -15,6 +15,7 @@ import java.awt.Stroke;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -40,14 +41,23 @@ public class PanelDibujo extends JPanel {
     private Stroke trazoActual;
 
     private boolean figuraRellena;//determina si se va dibujar una figura rellena
-private boolean seDibujo;
+
+    private boolean degradado;//determina si se va dibujar con degradado
+
+    private boolean lineaPunteada;//determina si sedinujara con esilo punteado - - --
+    private int longitudDeGuion;
+
+    private boolean seDibujo;
 
     private int anchuraLinea;//anchura de linea 
 
-    private int x1, y1, x2, y2;// 
+    private int x1, y1, x2, y2;// TAL VEZ NO SE UTILIZEN
 
     //constructor , crea un panel con figuras al azar 
     public PanelDibujo(JLabel etiqueta) {
+
+//        etiquetaEstado = etiqueta;
+
         figuras = new Figura[100];//incializa arreglo con 100 entradas
 
         cuentaFiguras = 0;
@@ -68,7 +78,6 @@ private boolean seDibujo;
     }//fin del constructor
 
     @Override//anotacion que asegura que los metodos se sobrescriban con los de la superclase
-
     //para cada arreglo de figuras , dibuja las figuras individuales
     public void paintComponent(Graphics g) {
 
@@ -91,53 +100,85 @@ private boolean seDibujo;
 
     }//fin del metodo paintComponent
 
+    void establecerDegradado(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void establecerColor2(Color showDialog) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void establecerLineaPunteada(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     //clase privada
     private class ManejadorEventos extends MouseAdapter implements MouseMotionListener {
 
         @Override
         public void mousePressed(MouseEvent e) {
+
+            //dibuja con linea punteada o normal
+            if (lineaPunteada) {
+                float[] guiones = {longitudDeGuion};
+                trazoActual = new BasicStroke(anchuraLinea, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 10, guiones, 0);
+            } else {
+                trazoActual = new BasicStroke(anchuraLinea, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
+            }
+
             switch (tipoFigura) {
                 case LINEAS:
                     figuraActual = new MiLinea(e.getX(), e.getY(), e.getX(), e.getY(), colorActual, trazoActual);
                     x1 = e.getX();
                     y1 = e.getY();
+
+                    //cuentaFiguras++;
                     break;
                 case OVALOS:
                     figuraActual = new MiOvalo(e.getX(), e.getY(), e.getX(), e.getY(), colorActual, trazoActual, figuraRellena);
                     x1 = e.getX();
                     y1 = e.getY();
+
+                    //cuentaFiguras++;
                     break;
                 case RECTANGULOS:
                     figuraActual = new MiRectangulo(e.getX(), e.getY(), e.getX(), e.getY(), colorActual, trazoActual, figuraRellena);
                     x1 = e.getX();
                     y1 = e.getY();
+
+                    //cuentaFiguras++;
                     break;
             }//fin de switch que creador de objetos figura de clases concretas
 
             seDibujo = true;
-
+          
         }//fin de metodo mousePressed
 
-//        @Override ///checar///
-//        public void mouseReleased(MouseEvent e) {
-//
-//            //establece los puntos finales 
-//            //figuraActual.establecerX1(x1);
-//            //figuraActual.establecerY1(x2);
-//            figuraActual.establecerX2(e.getX());
-//            figuraActual.establecerY2(e.getY());
-//
-//            //agrega la figura al arreglo
-//            figuras[cuentaFiguras++] = figuraActual;
-//
-//            repaint();
-//
-//            //establece figura actual a null
-//            figuraActual = null;
-//
-//            seDibujo = false;
-//        }//fin de metodo mouseReleased
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+            //establece los puntos finales 
+            //figuraActual.establecerX1(x1);
+            //figuraActual.establecerY1(x2);
+            figuraActual.establecerX2(e.getX());
+            figuraActual.establecerY2(e.getY());
+
+            //agrega la figura al arreglo
+            figuras[cuentaFiguras++] = figuraActual;
+
+            repaint();
+
+            //establece figura actual a null
+            figuraActual = null;
+
+            seDibujo = false;
+        }//fin de metodo mouseReleased
+
+
+        @Override
         public void mouseDragged(MouseEvent e) {
+            //establece el segundo punto de figuraActual con la posicion actual de raton
+
             figuraActual.establecerX2(e.getX());
             figuraActual.establecerY2(e.getY());
 
@@ -155,25 +196,12 @@ private boolean seDibujo;
         color1 = c;
     }
 
-//    public void establecerColor2(Color c) {
-//        color2 = c;
-//    }
     public void establecerTrazoActual(Stroke s) {
         trazoActual = s;
     }
 
     public void establecerFiguraRellena(boolean fR) {
         figuraRellena = fR;
-    }
-
-//    public void establecerDegradado(boolean d) {
-//        degradado = d;
-//    }//fin de metodo establecerDegradado
-//    public void establecerLineaPunteada(boolean l) {
-//        lineaPunteada = l;
-//    }
-    public void establecerAnchuraLinea(int anchura) {
-        anchuraLinea = anchura;
     }
 
     //borra la ultima figura dibujada
@@ -191,5 +219,6 @@ private boolean seDibujo;
         cuentaFiguras = 0;
         repaint();//acgtualiza la pantalla
     }
+
 
 }//fin de la clase PanelDibujo

@@ -35,11 +35,8 @@ public class Display extends JFrame {
     private JComboBox coloresJComboBox, tipoFiguraJComboBox;
     private JCheckBox rellenoJCheckBox;
 
-    //componenetes del panelJava2D
-//    private JCheckBox degradadoJCheckBox, tipoDeLineaJCheckBox;
-    private JButton color1Java2DJButton, color2Java2DJButton;
-//    private static JTextField anchoStrokeJTextField, longitudGuionStrokeJTextField;
-//    private JLabel anchoStrokeJLabel, longitudGuionJLabel;
+
+    private JButton color1Java2DJButton;
 
     private static final String[] nombresColores = {"Negro", "Gris claro", "Gris",
         "Gris oscuro", "Blanco", "Rojo", "Rosa", "Naranja", "Amarillo", "Verde",
@@ -53,7 +50,7 @@ public class Display extends JFrame {
     //constructor
     public Display() {
 
-        super("Aplicacion de dibujo interactiva");
+        super("Paint");
 
         JLabel barraEstado = new JLabel();
         panelDibujo = new PanelDibujo(barraEstado);
@@ -131,11 +128,14 @@ public class Display extends JFrame {
 
         panelNorte.add(panelFiguras);
 
+        /////////////////PANEL JAVA2D ///////////////////////////////////////////////
         panelJava2D = new JPanel();
         panelJava2D.setLayout(new FlowLayout());
 
+
         color1Java2DJButton = new JButton("Color 1");
-        color1Java2DJButton.addActionListener(new ActionListener() {
+        color1Java2DJButton.addActionListener(
+                new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -155,5 +155,7 @@ public class Display extends JFrame {
 
         add(panelDibujo, BorderLayout.CENTER);
 
-    }//fin de constructor 
+    }//fin de constructor MarcoDibujo
 }
+
+

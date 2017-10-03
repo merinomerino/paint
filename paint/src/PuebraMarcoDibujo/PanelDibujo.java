@@ -27,19 +27,27 @@ public class PanelDibujo extends JPanel {
     private static final int LINEAS = 0;
     private static final int OVALOS = 1;
     private static final int RECTANGULOS = 2;
-//varaibles de instancia nuevas 
+
+    //varaibles de instancia nuevas 
     private int cuentaFiguras;//cuenta el numero de figuras en el arreglo
- private int tipoFigura;//determina el tipo de figura a dibujar
- private Figura figuraActual;//figura actual que esta dibujando el usuario
-private Paint color1,  colorActual;//color del dibujo actual
-private Stroke trazoActual;
- private boolean figuraRellena;//determina si se va dibujar una figura rellena
+
+    private int tipoFigura;//determina el tipo de figura a dibujar
+
+    private Figura figuraActual;//figura actual que esta dibujando el usuario
+
+    private Paint color1, color2, colorDegradado, colorActual;//color del dibujo actual
+
+    private Stroke trazoActual;
+
+    private boolean figuraRellena;//determina si se va dibujar una figura rellena
 private boolean seDibujo;
-private int x1, y1, x2, y2;// 
+
+    private int anchuraLinea;//anchura de linea 
+
+    private int x1, y1, x2, y2;// 
 
     //constructor , crea un panel con figuras al azar 
     public PanelDibujo(JLabel etiqueta) {
-
         figuras = new Figura[100];//incializa arreglo con 100 entradas
 
         cuentaFiguras = 0;
@@ -60,6 +68,7 @@ private int x1, y1, x2, y2;//
     }//fin del constructor
 
     @Override//anotacion que asegura que los metodos se sobrescriban con los de la superclase
+
     //para cada arreglo de figuras , dibuja las figuras individuales
     public void paintComponent(Graphics g) {
 
@@ -87,55 +96,55 @@ private int x1, y1, x2, y2;//
 
         @Override
         public void mousePressed(MouseEvent e) {
-
             switch (tipoFigura) {
                 case LINEAS:
                     figuraActual = new MiLinea(e.getX(), e.getY(), e.getX(), e.getY(), colorActual, trazoActual);
                     x1 = e.getX();
                     y1 = e.getY();
-
-                    //cuentaFiguras++;
                     break;
                 case OVALOS:
                     figuraActual = new MiOvalo(e.getX(), e.getY(), e.getX(), e.getY(), colorActual, trazoActual, figuraRellena);
                     x1 = e.getX();
                     y1 = e.getY();
-
-                    //cuentaFiguras++;
                     break;
                 case RECTANGULOS:
                     figuraActual = new MiRectangulo(e.getX(), e.getY(), e.getX(), e.getY(), colorActual, trazoActual, figuraRellena);
                     x1 = e.getX();
                     y1 = e.getY();
-
-                    //cuentaFiguras++;
                     break;
             }//fin de switch que creador de objetos figura de clases concretas
 
             seDibujo = true;
-            
+
         }//fin de metodo mousePressed
 
-        @Override /////////////checar/////////////
-        public void mouseReleased(MouseEvent e) {
-
-            //establece los puntos finales 
-            //figuraActual.establecerX1(x1);
-            //figuraActual.establecerY1(x2);
+//        @Override ///checar///
+//        public void mouseReleased(MouseEvent e) {
+//
+//            //establece los puntos finales 
+//            //figuraActual.establecerX1(x1);
+//            //figuraActual.establecerY1(x2);
+//            figuraActual.establecerX2(e.getX());
+//            figuraActual.establecerY2(e.getY());
+//
+//            //agrega la figura al arreglo
+//            figuras[cuentaFiguras++] = figuraActual;
+//
+//            repaint();
+//
+//            //establece figura actual a null
+//            figuraActual = null;
+//
+//            seDibujo = false;
+//        }//fin de metodo mouseReleased
+        public void mouseDragged(MouseEvent e) {
             figuraActual.establecerX2(e.getX());
             figuraActual.establecerY2(e.getY());
 
-            //agrega la figura al arreglo
-            figuras[cuentaFiguras++] = figuraActual;
-
             repaint();
 
-            //establece figura actual a null
-            figuraActual = null;
+        }//fin del metodo mouseDragged
 
-            seDibujo = false;
-        }//fin de metodo mouseReleased
-//       
     }//fin de la clase interna ManejadorEventos
 
     public void establecerTipoFigura(int tF) {
@@ -146,12 +155,25 @@ private int x1, y1, x2, y2;//
         color1 = c;
     }
 
+//    public void establecerColor2(Color c) {
+//        color2 = c;
+//    }
     public void establecerTrazoActual(Stroke s) {
         trazoActual = s;
     }
 
     public void establecerFiguraRellena(boolean fR) {
         figuraRellena = fR;
+    }
+
+//    public void establecerDegradado(boolean d) {
+//        degradado = d;
+//    }//fin de metodo establecerDegradado
+//    public void establecerLineaPunteada(boolean l) {
+//        lineaPunteada = l;
+//    }
+    public void establecerAnchuraLinea(int anchura) {
+        anchuraLinea = anchura;
     }
 
     //borra la ultima figura dibujada

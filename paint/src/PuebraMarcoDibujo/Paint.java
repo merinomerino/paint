@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package paint;
+package PuebraMarcoDibujo;
 
-import javax.swing.JComboBox;
+//import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
+//import javax.swing.JPanel;
 
 /**
  *
@@ -16,9 +16,9 @@ import javax.swing.JPanel;
 public class Paint extends JFrame {
 
     public static void main(String[] args) {
-        Interfaz display = new Interfaz();
-        MiPanel pane=new MiPanel();
-        display.setBounds(0, 0, 800, 500);
+        Display display = new Display();
+        display.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        display.setSize(700, 500);
         display.setVisible(true);
 
     }

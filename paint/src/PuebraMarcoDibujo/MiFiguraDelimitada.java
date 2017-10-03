@@ -1,4 +1,4 @@
-package paint;
+package PuebraMarcoDibujo;
 
  
 import java.awt.BasicStroke;

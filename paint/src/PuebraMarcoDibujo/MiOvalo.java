@@ -1,7 +1,5 @@
-//3
-package PuebraMarcoDibujo;
 
-import java.awt.BasicStroke;
+package PuebraMarcoDibujo;import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Paint;
@@ -25,7 +23,7 @@ public class MiOvalo extends MiFiguraDelimitada{
 	@Override
 	public void dibujar ( Graphics2D g ){
 		g.setPaint( obtenerColor() );
-		//g.setStroke( obtenerStroke() );
+		g.setStroke( obtenerStroke() );
 		
 		if ( obtenerRelleno() == true )
 			g.fillOval( obtenerXSupIzq(), obtenerYSupIzq(), obtenerAnchura(), obtenerAltura() );

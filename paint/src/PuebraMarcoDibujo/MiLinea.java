@@ -1,5 +1,5 @@
-package PuebraMarcoDibujo;
 
+package PuebraMarcoDibujo;//Fig. 8.18: MiLinea.java
 //La clase MiLinea representa a una linea.
 import java.awt.BasicStroke;
 import java.awt.Color;

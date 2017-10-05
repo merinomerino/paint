@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import javax.swing.JPanel;
+
 public class Display extends JFrame {
 
     private JPanel panelFiguras, panelJava2D, panelNorte;
@@ -28,7 +29,6 @@ public class Display extends JFrame {
     private JComboBox coloresJComboBox, tipoFiguraJComboBox;
     private JCheckBox rellenoJCheckBox;
 
-  
     private JButton color1Java2DJButton;
 
     private static final String[] nombresColores = {"Negro", "Gris claro", "Gris",
@@ -85,7 +85,7 @@ public class Display extends JFrame {
 
                     @Override
                     public void itemStateChanged(ItemEvent e) {
-						// TODO Auto-generated method stub
+                        // TODO Auto-generated method stub
 
                         if (e.getStateChange() == ItemEvent.SELECTED) {
                             panelDibujo.establecerTipoFigura(tipoFiguraJComboBox.getSelectedIndex());
@@ -101,7 +101,7 @@ public class Display extends JFrame {
 
                     @Override
                     public void itemStateChanged(ItemEvent e) {
-						// TODO Auto-generated method stub
+                        // TODO Auto-generated method stub
 
                         if (e.getStateChange() == ItemEvent.SELECTED) {
                             panelDibujo.establecerFiguraRellena(true);
@@ -121,39 +121,34 @@ public class Display extends JFrame {
 
         panelNorte.add(panelFiguras);
 
-		/////////////////PANEL JAVA2D ///////////////////////////////////////////////
+        /////////////////PANEL JAVA2D ///////////////////////////////////////////////
         panelJava2D = new JPanel();
         panelJava2D.setLayout(new FlowLayout());
-
 
         color1Java2DJButton = new JButton("Color 1");
         color1Java2DJButton.addActionListener(new ActionListener() {
 
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-						// TODO Auto-generated method stub
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
 
-                        panelDibujo.establecerColor1(JColorChooser.showDialog(Display.this, "Escoge el color 1", Color.BLACK));
+                panelDibujo.establecerColor1(JColorChooser.showDialog(Display.this, "Escoge el color 1", Color.BLACK));
 
-                    }
+            }
 
-                });
+        });
 
+        panelJava2D.add(color1Java2DJButton);
 
-		panelJava2D.add(color1Java2DJButton);
-	
-		panelNorte.add(panelJava2D);
-		
-		add(panelNorte, BorderLayout.NORTH);
-		
-		add(panelDibujo, BorderLayout.CENTER);
-		
-		add(barraEstado, BorderLayout.SOUTH);
-		
-			
-	}//fin de constructor MarcoDibujo
+        panelNorte.add(panelJava2D);
+
+        add(panelNorte, BorderLayout.NORTH);
+
+        add(panelDibujo, BorderLayout.CENTER);
+
+        add(barraEstado, BorderLayout.SOUTH);
+
+    }//fin de constructor MarcoDibujo
 
 }//fin de la clase MarcoDibujo
 
-
-    

@@ -29,22 +29,13 @@ public class MarcoDibujo extends JFrame {
     private JButton botonUndoJButton, botonClearJButton;
     private JComboBox coloresJComboBox, tipoFiguraJComboBox;
     private JCheckBox rellenoJCheckBox;
-
     private JButton color1Java2DJButton;
-
-//    private static final String[] nombresColores = {"Negro", "Gris claro", "Gris",
-//        "Gris oscuro", "Blanco", "Rojo", "Rosa", "Naranja", "Amarillo", "Verde",
-//        "Magenta", "Cyan", "Azul"};
-//    private static final Color[] colores = {Color.BLACK, Color.LIGHT_GRAY, Color.GRAY,
-//        Color.DARK_GRAY, Color.WHITE, Color.RED, Color.PINK, Color.ORANGE, Color.YELLOW,
-//        Color.GREEN, Color.MAGENTA, Color.CYAN, Color.BLUE};
-//    //posible insercion de arreglo colores
     private static final String[] nombresFiguras = {"Lineas", "Ovalos", "Rectangulos"};
 
     //constructor
     public MarcoDibujo() {
 
-        super("Aplicacion de dibujo interactiva");
+        super("Mini Paint");
 
         JLabel barraEstado = new JLabel();
         panelDibujo = new PanelDibujo(barraEstado);
@@ -132,7 +123,6 @@ public class MarcoDibujo extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
 
                 panelDibujo.establecerColor1(JColorChooser.showDialog(MarcoDibujo.this, "Escoge el color 1", Color.BLACK));
 

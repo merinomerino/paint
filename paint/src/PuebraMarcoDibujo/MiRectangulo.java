@@ -7,12 +7,12 @@ import java.awt.Stroke;
 
 public class MiRectangulo extends MiFiguraDelimitada {
 	
-	//CONSTRUCTOR sin parametros
+	//constructor sin parametros
 	public MiRectangulo (){
 		this( 0, 0, 0, 0, Color.BLACK, new BasicStroke(), false);
 	}//fin del constructor sin parametros
 	
-	//CONSTRUCTOR con parametros
+	//constructor con parametros
 	public MiRectangulo ( int x1, int y1, int width, int height, Paint miColor, Stroke estilo , boolean r ){
 		super( x1, y1, width, height, miColor, estilo,  r);
 		

@@ -1,4 +1,5 @@
-package PuebraMarcoDibujo;//Fig. 8.19: PanelDibujo.java
+package PuebraMarcoDibujo;
+//////
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -48,7 +49,7 @@ public class PanelDibujo extends JPanel {
 
     private int anchuraLinea;//anchura de linea 
 
-    private int x1, y1, x2, y2;// TAL VEZ NO SE UTILIZEN
+    private int x1, y1, x2, y2;
 
     //constructor , crea un panel con figuras al azar 
     public PanelDibujo(JLabel etiqueta) {
@@ -67,7 +68,7 @@ public class PanelDibujo extends JPanel {
 
         this.setBackground(Color.WHITE);
 
-        ManejadorEventos manejador = new ManejadorEventos();
+        ManejadorEvents manejador = new ManejadorEvents();
 
         this.addMouseListener(manejador);
         this.addMouseMotionListener(manejador);
@@ -98,7 +99,7 @@ public class PanelDibujo extends JPanel {
     }//fin del metodo paintComponent
 
     //clase privada
-    private class ManejadorEventos extends MouseAdapter implements MouseMotionListener {
+    private class ManejadorEvents extends MouseAdapter implements MouseMotionListener {
 
         @Override
         public void mousePressed(MouseEvent e) {
@@ -110,9 +111,7 @@ public class PanelDibujo extends JPanel {
                 colorActual = color1;
             }
 
-            //obtiene el ancho de linea 
-//			anchuraLinea = Integer.parseInt(MarcoDibujo.obtenerAnchoStrokeJTextField().getText());
-//			longitudDeGuion = Integer.parseInt(MarcoDibujo.obtenerLongitudGuionStrokeJTextField().getText()); 
+       
 //			
             //dibuja con linea punteada o normal
             if (lineaPunteada) {
@@ -147,7 +146,7 @@ public class PanelDibujo extends JPanel {
             }//fin de switch que creador de objetos figura de clases concretas
 
             seDibujo = true;
-            //repaint();PENDIENTE REVISAR SI SE NECESITA
+     
         }//fin de metodo mousePressed
 
         @Override

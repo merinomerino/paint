@@ -199,6 +199,10 @@ public class PanelDibujo extends JPanel {
     public void establecerFiguraRellena(boolean fR) {
         figuraRellena = fR;
     }
+    //clase agregada para el degrado del dibujo 
+    public void establecerDegradado ( boolean d ){
+		degradado = d;
+	}
 
     //borra la ultima figura dibujada
     public void borrarUltimaFigura() {

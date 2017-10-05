@@ -96,18 +96,6 @@ public class PanelDibujo extends JPanel {
 
     }//fin del metodo paintComponent
 
-    void establecerDegradado(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void establecerColor2(Color showDialog) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void establecerLineaPunteada(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     //clase privada
     private class ManejadorEventos extends MouseAdapter implements MouseMotionListener {
 

@@ -126,51 +126,39 @@ public class Display extends JFrame {
         panelFiguras.add(rellenoJCheckBox);
 
         panelNorte.add(panelFiguras);
-
-        /////////////////PANEL JAVA2D ///////////////////////////////////////////////
+/////////////////PANEL JAVA2D ///////////////////////////////////////////////
         panelJava2D = new JPanel();
         panelJava2D.setLayout(new FlowLayout());
 
-       degradadoJCheckBox = new JCheckBox("Usar Degradado");
-        degradadoJCheckBox.addItemListener(
-               new ItemListener() {
-
-            @Override
-          public void itemStateChanged(ItemEvent e) {
-               // TODO Auto-generated method stub
-              if (e.getStateChange() == ItemEvent.SELECTED) {
-                panelDibujo.establecerDegradado(true);
-                } else {
-                   panelDibujo.establecerDegradado(false);
-           }
-            }//fin de metodo itemStateChanged
-
-     });
 
         color1Java2DJButton = new JButton("Color 1");
         color1Java2DJButton.addActionListener(new ActionListener() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+						// TODO Auto-generated method stub
 
-                panelDibujo.establecerColor1(JColorChooser.showDialog(Display.this, "Escoge el color 1", Color.BLACK));
+                        panelDibujo.establecerColor1(JColorChooser.showDialog(Display.this, "Escoge el color 1", Color.BLACK));
 
-            }
+                    }
 
-        });
-
-
-        panelJava2D.add(color1Java2DJButton);
+                });
 
 
-        panelNorte.add(panelJava2D);
+		panelJava2D.add(color1Java2DJButton);
+	
+		panelNorte.add(panelJava2D);
+		
+		add(panelNorte, BorderLayout.NORTH);
+		
+		add(panelDibujo, BorderLayout.CENTER);
+		
+		add(barraEstado, BorderLayout.SOUTH);
+		
+			
+	}//fin de constructor MarcoDibujo
 
-        add(panelNorte, BorderLayout.NORTH);
+}//fin de la clase MarcoDibujo
 
-        add(panelDibujo, BorderLayout.CENTER);
 
-//        add(barraEstado, BorderLayout.SOUTH);
-
-    }//fin de constructor MarcoDibujo
-}
+    

@@ -1,6 +1,4 @@
-
 package PuebraMarcoDibujo;
-
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -17,10 +15,8 @@ import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 
+import javax.swing.JPanel;
 public class Display extends JFrame {
 
     private JPanel panelFiguras, panelJava2D, panelNorte;
@@ -32,10 +28,8 @@ public class Display extends JFrame {
     private JComboBox coloresJComboBox, tipoFiguraJComboBox;
     private JCheckBox rellenoJCheckBox;
 
-    //componenetes del panelJava2D
-  private JCheckBox degradadoJCheckBox;
+  
     private JButton color1Java2DJButton;
-
 
     private static final String[] nombresColores = {"Negro", "Gris claro", "Gris",
         "Gris oscuro", "Blanco", "Rojo", "Rosa", "Naranja", "Amarillo", "Verde",
@@ -65,59 +59,59 @@ public class Display extends JFrame {
         botonUndoJButton.addActionListener(
                 new ActionListener() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                panelDibujo.borrarUltimaFigura();
-            }
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        // TODO Auto-generated method stub
+                        panelDibujo.borrarUltimaFigura();
+                    }
 
-        });
+                });
 
         botonClearJButton = new JButton("Borrar todo");
         botonClearJButton.addActionListener(
                 new ActionListener() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                panelDibujo.borrarDibujo();
-            }
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        // TODO Auto-generated method stub
+                        panelDibujo.borrarDibujo();
+                    }
 
-        });
+                });
 
         tipoFiguraJComboBox = new JComboBox(nombresFiguras);
         tipoFiguraJComboBox.addItemListener(
                 new ItemListener() {
 
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-                // TODO Auto-generated method stub
+                    @Override
+                    public void itemStateChanged(ItemEvent e) {
+						// TODO Auto-generated method stub
 
-                if (e.getStateChange() == ItemEvent.SELECTED) {
-                    panelDibujo.establecerTipoFigura(tipoFiguraJComboBox.getSelectedIndex());
-                }
+                        if (e.getStateChange() == ItemEvent.SELECTED) {
+                            panelDibujo.establecerTipoFigura(tipoFiguraJComboBox.getSelectedIndex());
+                        }
 
-            }
+                    }
 
-        });
+                });
 
         rellenoJCheckBox = new JCheckBox("Filled");
         rellenoJCheckBox.addItemListener(
                 new ItemListener() {
 
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-                // TODO Auto-generated method stub
+                    @Override
+                    public void itemStateChanged(ItemEvent e) {
+						// TODO Auto-generated method stub
 
-                if (e.getStateChange() == ItemEvent.SELECTED) {
-                    panelDibujo.establecerFiguraRellena(true);
-                } else {
-                    panelDibujo.establecerFiguraRellena(false);
-                }
+                        if (e.getStateChange() == ItemEvent.SELECTED) {
+                            panelDibujo.establecerFiguraRellena(true);
+                        } else {
+                            panelDibujo.establecerFiguraRellena(false);
+                        }
 
-            }
+                    }
 
-        });
+                });
 
         panelFiguras.add(botonUndoJButton);
         panelFiguras.add(botonClearJButton);
@@ -126,7 +120,8 @@ public class Display extends JFrame {
         panelFiguras.add(rellenoJCheckBox);
 
         panelNorte.add(panelFiguras);
-/////////////////PANEL JAVA2D ///////////////////////////////////////////////
+
+		/////////////////PANEL JAVA2D ///////////////////////////////////////////////
         panelJava2D = new JPanel();
         panelJava2D.setLayout(new FlowLayout());
 
